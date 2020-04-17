@@ -49,7 +49,7 @@ namespace EngineInvader
                 elements = new List<DrawElement>();
                 elements.Add(MyPlayer);
                 elements.Add(new AerialBattery(Console.WindowWidth / 2, 0));
-                elements.Add(new DestructionBattery(Console.WindowWidth / 4, 1));
+                elements.Add(new DestructionWire(Console.WindowWidth / 4, 1));
                 elements.Add(new Missile(Console.WindowWidth / 3, 10));
 
                 //Le timer qui permet d'avoir des actions qui se passent parallèle

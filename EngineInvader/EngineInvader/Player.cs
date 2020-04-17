@@ -12,7 +12,7 @@ namespace EngineInvader
 
         public override void Move()
         {
-            //récupérer quand on appuie sur les touches gauche et droite 
+            //Récupérer quand on appuie sur les touches gauche et droite 
             if (Console.KeyAvailable)
             {
                 if (Console.ReadKey(true).Key == ConsoleKey.LeftArrow && X > 0)

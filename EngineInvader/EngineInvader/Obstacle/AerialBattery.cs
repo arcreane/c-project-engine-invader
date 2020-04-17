@@ -1,5 +1,5 @@
 ﻿using System;
-namespace EngineInvader.Enemy
+namespace EngineInvader
 {
     public class AerialBattery : DrawElement
     {
