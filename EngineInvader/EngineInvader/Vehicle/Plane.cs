@@ -1,9 +1,9 @@
 ﻿using System;
 namespace EngineInvader
 {
-    public class Plane
+    public class Plane : Player
     {
-        public Plane()
+        public Plane(int x, int y) : base(x, y)
         {
         }
     }

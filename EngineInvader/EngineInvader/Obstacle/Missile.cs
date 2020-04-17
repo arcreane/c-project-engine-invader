@@ -1,10 +1,18 @@
 ﻿using System;
 namespace EngineInvader.Enemy
 {
-    public class Missile
+    public class Missile : DrawElement
     {
-        public Missile()
+        public Missile(int x, int y) : base(x, y)
         {
+            DisplayChar = 'M';
+            DrawColor = ConsoleColor.Yellow;
+        }
+
+        //Simple déplacement vertical
+        public override void Move()
+        {
+            Y++;
         }
     }
 }
