@@ -5,6 +5,8 @@ namespace EngineInvader
     {
         public Plane(int x, int y) : base(x, y)
         {
+            DisplayChar = 'X';
+            DrawColor = ConsoleColor.Blue;
         }
     }
 }

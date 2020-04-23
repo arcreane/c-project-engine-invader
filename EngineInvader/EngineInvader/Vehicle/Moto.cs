@@ -1,11 +1,14 @@
-﻿namespace EngineInvader
+﻿using System;
+namespace EngineInvader
 {
     public class Moto : Player
     {
-        //public int Vitesse { get; set; }
+        //public int Speed { get; set; }
         public Moto(int x, int y) : base(x, y)
         {
-            //Vitesse = 5;
+            //Speed = 5;
+            DisplayChar = 'X';
+            DrawColor = ConsoleColor.Red;
         }
     }
 }

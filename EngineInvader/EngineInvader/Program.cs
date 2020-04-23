@@ -14,7 +14,7 @@ namespace EngineInvader
             static Player MyPlayer;
             static void Main(string[] args)
             {
-                //Choix du véhicule
+                //Démarage et choix du véhicule
                 int vehicleChoosing;
                 Console.WriteLine("Hello and welcome to EngineInvader.");
                 Console.WriteLine("Choose your vehicle please.");
@@ -48,16 +48,29 @@ namespace EngineInvader
                 //Liste des éléments à dessiner (dont le joueur)
                 elements = new List<DrawElement>();
                 elements.Add(MyPlayer);
-                elements.Add(new AerialBattery(Console.WindowWidth / 2, 0));
-                elements.Add(new DestructionWire(Console.WindowWidth / 4, 1));
-                elements.Add(new Missile(Console.WindowWidth / 3, 10));
+                Invaders();
 
-                //Le timer qui permet d'avoir des actions qui se passent parallèle
+                //Générer des index aléatoires pour chaque obstcales
+                void Invaders()
+                {
+                Random rnd = new Random();
+                elements.Add(new AerialBattery(Console.WindowWidth / rnd.Next(1,10), rnd.Next(1, 10)));
+                elements.Add(new DestructionWire(Console.WindowWidth / rnd.Next(1, 10), rnd.Next(1, 10)));
+                elements.Add(new Missile(Console.WindowWidth / rnd.Next(1, 10), rnd.Next(1, 10)));
+                }
+
+                while (MyPlayer.IsDestroyed == false)
+                {
+                    Invaders();
+                }
+
+                //Le timer qui permet d'avoir des actions qui se passent parallèlement
                 //L'interval correspond à la durée entre 2 événement "Elapsed"
                 System.Timers.Timer timer = new System.Timers.Timer();
                 timer.Elapsed += Timer_Elapsed;
                 timer.Interval = 200;
                 timer.Start();
+                
                 //La gestion des mouvements du joueur doit être plus fine que la boucle de jeu, on la met donc dans un
                 //while true pour le faire le plus rapidement possible
                 while (true)
@@ -103,11 +116,7 @@ namespace EngineInvader
                     }
                 }
             }
-            //Faire réapparaitre aléatoirement les éléments à dessiner qui ont été supprmié
-            private static void Refresh(object sender, ElapsedEventArgs e)
-            {
-                Console.Clear();
-            }
+    
         }
     }
 }

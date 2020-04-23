@@ -5,6 +5,8 @@ namespace EngineInvader
     {
         public Tank(int x, int y) : base(x, y)
         {
+            DisplayChar = 'X';
+            DrawColor = ConsoleColor.Yellow;
         }
     }
 }
