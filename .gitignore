@@ -1,0 +1,17 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/EngineInvader/EngineInvader/obj/Release/EngineInvader.exe
+/EngineInvader/EngineInvader/obj/Release/EngineInvader.csprojAssemblyReference.cache
+/EngineInvader/EngineInvader/obj/Release/EngineInvader.csproj.FileListAbsolute.txt
+/EngineInvader/EngineInvader/obj/Release/EngineInvader.csproj.CoreCompileInputs.cache
+/EngineInvader/EngineInvader/obj/Debug/EngineInvader.pdb
+/EngineInvader/EngineInvader/obj/Debug/EngineInvader.exe
+/EngineInvader/EngineInvader/obj/Debug/EngineInvader.csprojAssemblyReference.cache
+/EngineInvader/EngineInvader/obj/Debug/EngineInvader.csproj.FileListAbsolute.txt
+/EngineInvader/EngineInvader/obj/Debug/EngineInvader.csproj.CoreCompileInputs.cache
+/EngineInvader/EngineInvader/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/EngineInvader/EngineInvader/bin/Release/EngineInvader.exe
+/EngineInvader/EngineInvader/bin/Debug/EngineInvader.pdb
+/EngineInvader/EngineInvader/bin/Debug/EngineInvader.exe

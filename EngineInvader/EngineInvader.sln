@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineInvader", "EngineInvader\EngineInvader.csproj", "{7AAAFD5C-BE3F-4D15-8ED6-40758074D14B}"
 EndProject
 Global
@@ -9,9 +10,15 @@ Global
 		Release|anycpu = Release|anycpu
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7AAAFD5C-BE3F-4D15-8ED6-40758074D14B}.Debug|anycpu.ActiveCfg = Debug|anycpu
-		{7AAAFD5C-BE3F-4D15-8ED6-40758074D14B}.Debug|anycpu.Build.0 = Debug|anycpu
-		{7AAAFD5C-BE3F-4D15-8ED6-40758074D14B}.Release|anycpu.ActiveCfg = Release|anycpu
-		{7AAAFD5C-BE3F-4D15-8ED6-40758074D14B}.Release|anycpu.Build.0 = Release|anycpu
+		{7AAAFD5C-BE3F-4D15-8ED6-40758074D14B}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{7AAAFD5C-BE3F-4D15-8ED6-40758074D14B}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{7AAAFD5C-BE3F-4D15-8ED6-40758074D14B}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{7AAAFD5C-BE3F-4D15-8ED6-40758074D14B}.Release|anycpu.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD4B42FA-D72C-420F-9F31-1D958DFE9A56}
 	EndGlobalSection
 EndGlobal

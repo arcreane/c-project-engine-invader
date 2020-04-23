@@ -17,7 +17,7 @@ namespace EngineInvader
             {
                 if (Console.ReadKey(true).Key == ConsoleKey.LeftArrow && X > 0)
                     X--;
-                else if (Console.ReadKey(true).Key == ConsoleKey.RightArrow && X < Console.LargestWindowWidth)
+                else if (Console.ReadKey(true).Key == ConsoleKey.RightArrow && X < Console.WindowWidth-1)
                     X++;
             }
         }

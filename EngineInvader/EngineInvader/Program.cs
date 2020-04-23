@@ -50,19 +50,12 @@ namespace EngineInvader
                 elements.Add(MyPlayer);
                 Invaders();
 
-                //Générer des index aléatoires pour chaque obstcales
-                void Invaders()
-                {
-                Random rnd = new Random();
-                elements.Add(new AerialBattery(Console.WindowWidth / rnd.Next(1,10), rnd.Next(1, 10)));
-                elements.Add(new DestructionWire(Console.WindowWidth / rnd.Next(1, 10), rnd.Next(1, 10)));
-                elements.Add(new Missile(Console.WindowWidth / rnd.Next(1, 10), rnd.Next(1, 10)));
-                }
 
-                while (MyPlayer.IsDestroyed == false)
-                {
-                    Invaders();
-                }
+                Console.Clear();
+                //while (MyPlayer.IsDestroyed == false)
+                //{
+                //    Invaders();
+                //}
 
                 //Le timer qui permet d'avoir des actions qui se passent parallèlement
                 //L'interval correspond à la durée entre 2 événement "Elapsed"
@@ -115,8 +108,17 @@ namespace EngineInvader
                         elements.RemoveAt(i);
                     }
                 }
+                if(elements.Count < 20)
+                    Invaders();
             }
-    
+            //Générer des index aléatoires pour chaque obstcales
+            static void Invaders()
+            {
+                Random rnd = new Random();
+                elements.Add(new AerialBattery(Console.WindowWidth-rnd.Next(1, Console.WindowWidth-1), rnd.Next(1, 10)));
+                elements.Add(new DestructionWire(Console.WindowWidth - rnd.Next(1, Console.WindowWidth-1), rnd.Next(1, 10)));
+                elements.Add(new Missile(Console.WindowWidth - rnd.Next(1, Console.WindowWidth-1), rnd.Next(1, 10)));
+            }
         }
     }
 }
