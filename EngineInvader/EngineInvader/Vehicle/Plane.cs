@@ -8,5 +8,11 @@ namespace EngineInvader
             DisplayChar = 'X';
             DrawColor = ConsoleColor.Blue;
         }
+
+
+        protected override void actionspeciale()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

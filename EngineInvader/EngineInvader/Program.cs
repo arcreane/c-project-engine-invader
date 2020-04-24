@@ -30,6 +30,8 @@ namespace EngineInvader
                 {
                     case 1:
                         Console.WriteLine("Moto");
+                        //Le player doit être créé à part pour pouvoir le manipuler tout seul
+                        MyPlayer = new Moto(50, Console.WindowHeight - 5);
                         break;
                     case 2:
                         Console.WriteLine("Plane");
@@ -44,8 +46,7 @@ namespace EngineInvader
 
                 Console.CursorVisible = false;
 
-                //Le player doit être créé à part pour pouvoir le manipuler tout seul
-                MyPlayer = new Player(50, Console.WindowHeight - 5);
+               
 
                 //Liste des éléments à dessiner (dont le joueur)
                 elements = new List<DrawElement>();
@@ -92,6 +93,9 @@ namespace EngineInvader
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.SetCursorPosition(0, 0);
+                Console.WriteLine("           ");
+                Console.SetCursorPosition(0, 0);
+                Console.WriteLine(score);
                 //Pour tous les éléments à dessiner, on appels également leur méthode de déplacement et si ils
                 //sortent de l'écran on les supprime de la liste
                 for (int i = elements.Count - 1; i >= 0; i--)
@@ -121,9 +125,9 @@ namespace EngineInvader
             static void Invaders()
             {
                 Random rnd = new Random();
-                elements.Add(new AerialBattery(Console.WindowWidth-rnd.Next(1, Console.WindowWidth-1), rnd.Next(1, 10)));
-                elements.Add(new DestructionWire(Console.WindowWidth - rnd.Next(1, Console.WindowWidth-1), rnd.Next(1, 10)));
-                elements.Add(new Missile(Console.WindowWidth - rnd.Next(1, Console.WindowWidth-1), rnd.Next(1, 10)));
+                elements.Add(new AerialBattery(Console.WindowWidth-rnd.Next(1, Console.WindowWidth-1), rnd.Next(2, 10)));
+                elements.Add(new DestructionWire(Console.WindowWidth - rnd.Next(1, Console.WindowWidth-1), rnd.Next(2, 10)));
+                elements.Add(new Missile(Console.WindowWidth - rnd.Next(1, Console.WindowWidth-1), rnd.Next(2, 10)));
             }
         }
     }

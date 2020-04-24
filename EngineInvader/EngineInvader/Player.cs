@@ -1,7 +1,7 @@
 ﻿using System;
 namespace EngineInvader
 {
-    public class Player : DrawElement
+    abstract public class Player : DrawElement
     {
       
         public Player(int x, int y) : base (x,y)
@@ -17,9 +17,15 @@ namespace EngineInvader
             {
                 if (Console.ReadKey(true).Key == ConsoleKey.LeftArrow && X > 0)
                     X--;
-                else if (Console.ReadKey(true).Key == ConsoleKey.RightArrow && X < Console.WindowWidth-1)
+                else if (Console.ReadKey(true).Key == ConsoleKey.RightArrow && X < Console.WindowWidth - 1)
                     X++;
+
+                else if (Console.ReadKey(true).Key == ConsoleKey.Spacebar)
+                    actionspeciale();
+
             }
         }
+
+        protected abstract void actionspeciale();
     }
 }
