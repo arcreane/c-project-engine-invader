@@ -12,6 +12,8 @@ namespace EngineInvader
             //Liste des éléments à dessiner 
             static List<DrawElement> elements;
             static Player MyPlayer;
+            private static int score;
+
             static void Main(string[] args)
             {
                 //Démarage et choix du véhicule
@@ -50,20 +52,18 @@ namespace EngineInvader
                 elements.Add(MyPlayer);
                 Invaders();
 
-
                 Console.Clear();
-                //while (MyPlayer.IsDestroyed == false)
-                //{
-                //    Invaders();
-                //}
 
                 //Le timer qui permet d'avoir des actions qui se passent parallèlement
                 //L'interval correspond à la durée entre 2 événement "Elapsed"
+                //Variable du score
                 System.Timers.Timer timer = new System.Timers.Timer();
                 timer.Elapsed += Timer_Elapsed;
                 timer.Interval = 200;
                 timer.Start();
-                
+                score = 0;
+                //level = 1;
+
                 //La gestion des mouvements du joueur doit être plus fine que la boucle de jeu, on la met donc dans un
                 //while true pour le faire le plus rapidement possible
                 while (true)
@@ -83,6 +83,7 @@ namespace EngineInvader
                 Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("GAME OVER");
+                Console.WriteLine(score);
                 Console.ReadLine();
             }
 
@@ -106,12 +107,17 @@ namespace EngineInvader
                     {
                         elements[i].Draw(false);
                         elements.RemoveAt(i);
+                        score++;
+                        if (score > 100)
+                        {
+                            //level++;
+                        }
                     }
                 }
                 if(elements.Count < 20)
                     Invaders();
             }
-            //Générer des index aléatoires pour chaque obstcales
+            //Générer des index aléatoires pour chaque obstcales à dessiner
             static void Invaders()
             {
                 Random rnd = new Random();
