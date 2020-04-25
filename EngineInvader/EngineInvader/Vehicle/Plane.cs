@@ -8,12 +8,20 @@ namespace EngineInvader
             DisplayString = "oÔo";
             EraseString = "   ";
             DrawColor = ConsoleColor.Red;
-            Speed = 200;
+            Speed = 50;
         }
 
-        //protected override void actionspeciale()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        //L'avion lance des rockets
+        protected override void SpecialAction()
+        {
+            DisplayString = "*";
+            EraseString = " ";
+            DrawColor = ConsoleColor.Red;
+            RocketMove();
+        }
+        public override void RocketMove()
+        {
+            Y--;
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace EngineInvader
             static List<DrawElement> elements;
             static Player MyPlayer;
             private static int score;
-
+            private static int level;
             static void Main(string[] args)
             {
                 //Démarage et choix du véhicule
@@ -63,13 +63,10 @@ namespace EngineInvader
                 timer.Interval = 200;
                 timer.Start();
                 score = 0;
-                //level = 1;
+                level = 1;
 
-                //La gestion des mouvements du joueur doit être plus fine que la boucle de jeu, on la met donc dans un
-                //while true pour le faire le plus rapidement possible
                 while (true)
                 {
-                    MyPlayer.Move();
                     //Si le joueur est détruit, le jeu s'arrete
                     if (MyPlayer.IsDestroyed)
                     {
@@ -77,16 +74,20 @@ namespace EngineInvader
                         break;
                     }
                 }
+
                 //Etre sur que le timer a bien fini sa boucle avant de nettoyer l'écran
                 //Affichage game obver
                 Thread.Sleep(200);
                 Console.Clear();
                 Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
                 Console.ForegroundColor = ConsoleColor.Red;
-                string str = "Game Over" + "\n" + "Your score is: " + score + "\n" + "TRY AGAIN?";
+                string str = "Game Over" + "\n" + "Your score is: " + score + "\n" + "Press 1 for replay";
                 Console.WriteLine(str);
 
                 //Proposer au joueur de rejouer
+                System.Diagnostics.ProcessStartInfo
+                myInfo = new System.Diagnostics.ProcessStartInfo();
+                myInfo.FileName = "EngineInvader.exe";
                 int replay;
                 Console.WriteLine("1 - Yes");
                 Console.WriteLine("2 - No");
@@ -94,16 +95,15 @@ namespace EngineInvader
                 switch (replay)
                 {
                     case 1:
-                        //Restart
+                        System.Diagnostics.Process.Start(myInfo);
                         break;
                     case 2:
-                        //Close
+                        Console.WriteLine("Please close the consol");
                         break;
                     default:
-                        Console.WriteLine("Please choose between 1, 2, 3");
+                        Console.WriteLine("Please press 1 or close the consol");
                         break;
                 }
-
             }
 
             //Générer des index aléatoires pour chaque obstcales à dessiner
@@ -121,6 +121,8 @@ namespace EngineInvader
                 Console.SetCursorPosition(0, 0);
                 string str2 = "Score: " + score;
                 Console.WriteLine(str2);
+                string str3 = "Level: " + level;
+                Console.WriteLine(str3);
 
                 //Pour tous les éléments à dessiner, on appels également leur méthode de déplacement et si ils
                 //sortent de l'écran on les supprime de la liste
@@ -132,25 +134,21 @@ namespace EngineInvader
                     if (i > 0 && elements[i].X == MyPlayer.X && elements[i].Y == MyPlayer.Y)
                     {
                         MyPlayer.IsDestroyed = true;
-                        //MyPlayer.IsTouched = true;
                     }
-                    //if (i > 0 && AerialBattery[i].X == MyPlayer.X && AerialBattery[i].Y == MyPlayer.Y)
-                    //{
-                    //    MyPlayer.IsTouched = true;
-                    //}
                     if (elements[i].IsDestroyed)
                     {
+                        //Plus il y'a déléments supprimés plus la diffiuclté augmente
                         elements[i].Draw(false);
                         elements.RemoveAt(i);
                         score++;
-                        //if (score > 150)
-                        //{
-                        //    level++;
-                        //    timer.Interval = 200 + 50;
-                        //}
+                        if (score > 150*level)
+                        {
+                            level++;
+                            //Changer la vitesse du timer ici
+                        }
                     }
                 }
-                if(elements.Count < 20)
+                if (elements.Count < 20)
                     Invaders();
             }
         }
