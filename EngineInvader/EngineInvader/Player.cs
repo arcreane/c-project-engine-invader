@@ -1,12 +1,13 @@
 ﻿using System;
 namespace EngineInvader
 {
-    abstract public class Player : DrawElement
+    public class Player : DrawElement
     {
-      
+        //Déclaration de la variable speed qui va être affecté à chaque classe enfant
+        public int Speed;
         public Player(int x, int y) : base (x,y)
         {
-            DisplayChar = 'X';
+            DisplayString = "X"; 
             DrawColor = ConsoleColor.Red;
         }
 
@@ -19,13 +20,11 @@ namespace EngineInvader
                     X--;
                 else if (Console.ReadKey(true).Key == ConsoleKey.RightArrow && X < Console.WindowWidth - 1)
                     X++;
-
-                else if (Console.ReadKey(true).Key == ConsoleKey.Spacebar)
-                    actionspeciale();
-
+                //else if (Console.ReadKey(true).Key == ConsoleKey.Spacebar)
+                //    actionspeciale();
             }
         }
 
-        protected abstract void actionspeciale();
+        //protected abstract void actionspeciale();
     }
 }

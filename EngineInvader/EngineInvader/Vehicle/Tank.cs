@@ -5,14 +5,16 @@ namespace EngineInvader
     {
         public Tank(int x, int y) : base(x, y)
         {
-            DisplayChar = 'X';
-            DrawColor = ConsoleColor.Yellow;
+            DisplayString = "O[]O";
+            EraseString = "    ";
+            DrawColor = ConsoleColor.Red;
+            Speed = 250;
         }
 
-
-        protected override void actionspeciale()
-        {
-            throw new NotImplementedException();
-        }
+        //protected override void actionspeciale()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
+ 

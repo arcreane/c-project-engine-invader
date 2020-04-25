@@ -5,7 +5,8 @@ namespace EngineInvader
     {
         public AerialBattery(int x, int y) : base(x, y)
         {
-            DisplayChar = 'A';
+            DisplayString = "##";
+            EraseString = "  ";
             DrawColor = ConsoleColor.Blue;
         }
 

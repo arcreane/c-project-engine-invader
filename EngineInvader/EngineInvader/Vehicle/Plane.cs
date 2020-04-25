@@ -5,14 +5,15 @@ namespace EngineInvader
     {
         public Plane(int x, int y) : base(x, y)
         {
-            DisplayChar = 'X';
-            DrawColor = ConsoleColor.Blue;
+            DisplayString = "oÔo";
+            EraseString = "   ";
+            DrawColor = ConsoleColor.Red;
+            Speed = 200;
         }
 
-
-        protected override void actionspeciale()
-        {
-            throw new NotImplementedException();
-        }
+        //protected override void actionspeciale()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

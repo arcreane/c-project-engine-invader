@@ -33,7 +33,8 @@ namespace EngineInvader
         public int PrevY { get; set; }
 
         //Informations servant à afficher l'objet
-        public char DisplayChar { get; set; }
+        public string DisplayString { get; set; }
+        public string EraseString { get; set; } = " ";
         public ConsoleColor DrawColor { get; set; }
 
         //Constructeur permettant de positionner l'élément à sa création
@@ -48,15 +49,15 @@ namespace EngineInvader
         {
             Console.ForegroundColor = DrawColor;
             Console.SetCursorPosition(PrevX, PrevY);
-            Console.Write(" ");
+            Console.Write(EraseString);
             Console.SetCursorPosition(X, Y);
             if(display)
-                Console.Write(DisplayChar);
+                Console.Write(DisplayString);
             PrevX = X;
             PrevY = Y;
         }
 
-        //Méthode de Déplacement. Doit être redéfinie dans chaque classe enfant
+        //La méthode de Déplacement qui est redéfinie dans chaque classe enfant
         public abstract void Move();
     }
 }

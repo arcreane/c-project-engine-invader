@@ -5,8 +5,9 @@ namespace EngineInvader
     {
         public DestructionWire(int x, int y) : base(x, y)
         {
-            DisplayChar = 'D';
-            DrawColor = ConsoleColor.Red;
+            DisplayString = "##";
+            EraseString = "  ";
+            DrawColor = ConsoleColor.DarkGray;
         }
 
         //Simple déplacement vertical

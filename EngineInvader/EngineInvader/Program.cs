@@ -30,14 +30,16 @@ namespace EngineInvader
                 {
                     case 1:
                         Console.WriteLine("Moto");
-                        //Le player doit être créé à part pour pouvoir le manipuler tout seul
                         MyPlayer = new Moto(50, Console.WindowHeight - 5);
+
                         break;
                     case 2:
                         Console.WriteLine("Plane");
+                        MyPlayer = new Plane(50, Console.WindowHeight - 5);
                         break;
                     case 3:
                         Console.WriteLine("Tank");
+                        MyPlayer = new Tank(50, Console.WindowHeight - 5);
                         break;
                     default:
                         Console.WriteLine("Please choose between 1, 2, 3");
@@ -45,8 +47,6 @@ namespace EngineInvader
                 }
 
                 Console.CursorVisible = false;
-
-               
 
                 //Liste des éléments à dessiner (dont le joueur)
                 elements = new List<DrawElement>();
@@ -76,26 +76,52 @@ namespace EngineInvader
                         timer.Stop();
                         break;
                     }
-
                 }
                 //Etre sur que le timer a bien fini sa boucle avant de nettoyer l'écran
+                //Affichage game obver
                 Thread.Sleep(200);
                 Console.Clear();
                 Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("GAME OVER");
-                Console.WriteLine(score);
-                Console.ReadLine();
+                string str = "Game Over" + "\n" + "Your score is: " + score + "\n" + "TRY AGAIN?";
+                Console.WriteLine(str);
+
+                //Proposer au joueur de rejouer
+                int replay;
+                Console.WriteLine("1 - Yes");
+                Console.WriteLine("2 - No");
+                replay = int.Parse(Console.ReadLine());
+                switch (replay)
+                {
+                    case 1:
+                        //Restart
+                        break;
+                    case 2:
+                        //Close
+                        break;
+                    default:
+                        Console.WriteLine("Please choose between 1, 2, 3");
+                        break;
+                }
+
+            }
+
+            //Générer des index aléatoires pour chaque obstcales à dessiner
+            static void Invaders()
+            {
+                Random rnd = new Random();
+                elements.Add(new AerialBattery(Console.WindowWidth - rnd.Next(1, Console.WindowWidth - 1), rnd.Next(2, 10)));
+                elements.Add(new DestructionWire(Console.WindowWidth - rnd.Next(1, Console.WindowWidth - 1), rnd.Next(2, 10)));
+                elements.Add(new Missile(Console.WindowWidth - rnd.Next(1, Console.WindowWidth - 1), rnd.Next(2, 10)));
             }
 
             //Méthode appelé dans un thread en parallèle pour que le programme puissent faire simultanément plusieurs chose
             private static void Timer_Elapsed(object sender, ElapsedEventArgs e)
             {
-                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.SetCursorPosition(0, 0);
-                Console.WriteLine("           ");
-                Console.SetCursorPosition(0, 0);
-                Console.WriteLine(score);
+                string str2 = "Score: " + score;
+                Console.WriteLine(str2);
+
                 //Pour tous les éléments à dessiner, on appels également leur méthode de déplacement et si ils
                 //sortent de l'écran on les supprime de la liste
                 for (int i = elements.Count - 1; i >= 0; i--)
@@ -106,28 +132,26 @@ namespace EngineInvader
                     if (i > 0 && elements[i].X == MyPlayer.X && elements[i].Y == MyPlayer.Y)
                     {
                         MyPlayer.IsDestroyed = true;
+                        //MyPlayer.IsTouched = true;
                     }
+                    //if (i > 0 && AerialBattery[i].X == MyPlayer.X && AerialBattery[i].Y == MyPlayer.Y)
+                    //{
+                    //    MyPlayer.IsTouched = true;
+                    //}
                     if (elements[i].IsDestroyed)
                     {
                         elements[i].Draw(false);
                         elements.RemoveAt(i);
                         score++;
-                        if (score > 100)
-                        {
-                            //level++;
-                        }
+                        //if (score > 150)
+                        //{
+                        //    level++;
+                        //    timer.Interval = 200 + 50;
+                        //}
                     }
                 }
                 if(elements.Count < 20)
                     Invaders();
-            }
-            //Générer des index aléatoires pour chaque obstcales à dessiner
-            static void Invaders()
-            {
-                Random rnd = new Random();
-                elements.Add(new AerialBattery(Console.WindowWidth-rnd.Next(1, Console.WindowWidth-1), rnd.Next(2, 10)));
-                elements.Add(new DestructionWire(Console.WindowWidth - rnd.Next(1, Console.WindowWidth-1), rnd.Next(2, 10)));
-                elements.Add(new Missile(Console.WindowWidth - rnd.Next(1, Console.WindowWidth-1), rnd.Next(2, 10)));
             }
         }
     }

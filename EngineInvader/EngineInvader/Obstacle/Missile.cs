@@ -5,8 +5,9 @@ namespace EngineInvader
     {
         public Missile(int x, int y) : base(x, y)
         {
-            DisplayChar = 'M';
-            DrawColor = ConsoleColor.Yellow;
+            DisplayString = "##";
+            EraseString = "  ";
+            DrawColor = ConsoleColor.DarkCyan;
         }
 
         //Simple déplacement vertical
