@@ -14,9 +14,6 @@ namespace EngineInvader
             static Player MyPlayer;
             private static int score;
             private static int level;
-            //bool rejouer = false;
-            //while(rejouer == false)
-            //{
             static void Main(string[] args)
             {
                 //Démarage et choix du véhicule
@@ -84,16 +81,29 @@ namespace EngineInvader
                 Console.Clear();
                 Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
                 Console.ForegroundColor = ConsoleColor.Red;
-                string str = "Game Over" + "\n" + "Your score is: " + score + "\n";
+                string str = "Game Over" + "\n" + "Your score is: " + score + "\n" + "Press 1 for replay";
                 Console.WriteLine(str);
 
                 //Proposer au joueur de rejouer
-                //Console.WriteLine("Try Again ? (1- Yes / 2- No)");
-                //char rejouer = Console.ReadLine();
-                //if (rejouer == '2')
-                //{
-                //    rejouer = true;
-                //}
+                System.Diagnostics.ProcessStartInfo
+                myInfo = new System.Diagnostics.ProcessStartInfo();
+                myInfo.FileName = "EngineInvader.exe";
+                int replay;
+                Console.WriteLine("1 - Yes");
+                Console.WriteLine("2 - No");
+                replay = int.Parse(Console.ReadLine());
+                switch (replay)
+                {
+                    case 1:
+                        System.Diagnostics.Process.Start(myInfo);
+                        break;
+                    case 2:
+                        Console.WriteLine("Please close the consol");
+                        break;
+                    default:
+                        Console.WriteLine("Please press 1 or close the consol");
+                        break;
+                }
             }
 
             //Générer des index aléatoires pour chaque obstcales à dessiner
@@ -131,17 +141,16 @@ namespace EngineInvader
                         elements[i].Draw(false);
                         elements.RemoveAt(i);
                         score++;
-                        if (score > 150)
+                        if (score > 150*level)
                         {
                             level++;
-                            //timer.Interval+50;
+                            //Changer la vitesse du timer ici
                         }
                     }
                 }
                 if (elements.Count < 20)
                     Invaders();
             }
-        //}
         }
     }
 }

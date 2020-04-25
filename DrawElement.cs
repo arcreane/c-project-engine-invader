@@ -59,5 +59,7 @@ namespace EngineInvader
 
         //La méthode de Déplacement qui est redéfinie dans chaque classe enfant
         public abstract void Move();
+        public abstract void RocketMove();
+        protected abstract void SpecialAction();
     }
 }

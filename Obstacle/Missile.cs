@@ -5,7 +5,7 @@ namespace EngineInvader
     {
         public Missile(int x, int y) : base(x, y)
         {
-            DisplayString = "##";
+            DisplayString = "$$";
             EraseString = "  ";
             DrawColor = ConsoleColor.DarkCyan;
         }

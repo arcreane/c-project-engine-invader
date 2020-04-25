@@ -11,9 +11,17 @@ namespace EngineInvader
             Speed = 50;
         }
 
-        //protected override void specialeAction()
-        //{
-        //    MyPlayerIsInvinsble();
-        //}
+        //L'avion lance des rockets
+        protected override void SpecialAction()
+        {
+            DisplayString = "*";
+            EraseString = " ";
+            DrawColor = ConsoleColor.Red;
+            RocketMove();
+        }
+        public override void RocketMove()
+        {
+            Y--;
+        }
     }
 }

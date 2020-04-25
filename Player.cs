@@ -33,11 +33,14 @@ namespace EngineInvader
                     X--;
                 else if (Console.ReadKey(true).Key == ConsoleKey.RightArrow && X < Console.WindowWidth - 1)
                     X++;
-                //else if (Console.ReadKey(true).Key == ConsoleKey.Spacebar)
-                //    specialeAction();
+                else if (Console.ReadKey(true).Key == ConsoleKey.Spacebar)
+                    SpecialAction();
             }
         }
 
-        //protected abstract void specialeAction();
+        protected override void SpecialAction()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

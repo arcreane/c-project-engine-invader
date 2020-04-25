@@ -5,15 +5,15 @@ namespace EngineInvader
     {
         public Moto(int x, int y) : base(x, y)
         {
-            DisplayString = "8";
-            EraseString = " ";
+            DisplayString = "-!-";
+            EraseString = "  ";
             DrawColor = ConsoleColor.Red;
-            Speed = 1;
+            Speed = 10;
         }
 
-        //protected override void specialeAction()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        //La moto est encore plus rapide
+        protected override void SpecialAction()
+        {
+        }
     }
 }

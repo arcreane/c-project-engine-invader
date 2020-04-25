@@ -11,10 +11,9 @@ namespace EngineInvader
             Speed = 200;
         }
 
-        //protected override void specialeAction())
-        //{
-        //    throw new NotImplementedException();
-        //}
+        //Le tank est invinsible durant la durée du timer
+        protected override void SpecialAction()
+        {i   
+        }
     }
 }
- 
